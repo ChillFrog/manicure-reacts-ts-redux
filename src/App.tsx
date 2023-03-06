@@ -13,14 +13,42 @@ import nail_form from "./assets/dropdown_icons/nail_form.png";
 import nail_color from "./assets/dropdown_icons/nail_color.png";
 import nail_effect from "./assets/dropdown_icons/nail_effect.png";
 import MenuItem from "./components/Main/MenuItem";
+import { useAppDispatch } from "./hooks/hooks";
+import DropdownMenu from "./components/Main/DropdownMenu";
+import DropdownItem from "./components/Main/DropdownItem";
 
 function App() {
+  const dispatch = useAppDispatch();
   return (
     <div className="flex flex-col">
       <Search />
       <Menu>
-        <MenuItem onClick={setMenuShapes} src={nail_color} />
+        <MenuItem
+          onClick={() => dispatch(setMenuShapes())}
+          alt="форма"
+          src={nail_form}
+          text="Форма"
+        />
+        <MenuItem
+          onClick={() => dispatch(setMenuColor())}
+          alt="цвет"
+          src={nail_color}
+          text="Цвет"
+        />
+        <MenuItem
+          onClick={() => dispatch(setMenuEffects())}
+          alt="узоры"
+          src={nail_effect}
+          text="Узоры"
+        />
       </Menu>
+      <DropdownMenu>
+        <DropdownItem text="Форма">
+          <div className="flex h-40">
+            <ShapesBar />
+          </div>
+        </DropdownItem>
+      </DropdownMenu>
     </div>
   );
 }

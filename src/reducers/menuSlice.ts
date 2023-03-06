@@ -4,25 +4,25 @@ type MenuState = {
   open: "Форма" | "Цвет" | "Узоры" | "";
 };
 
-const initialState: MenuState = {
+const initialState = {
   open: "",
-};
+} as MenuState;
 
 const menuSlice = createSlice({
   name: "menu",
   initialState,
   reducers: {
-    setMenuShapes: (state, action: PayloadAction<"Форма">) => {
-      state.open = action.payload;
+    setMenuShapes: (state) => {
+      state.open = "Форма";
     },
-    setMenuColor: (state, action: PayloadAction<"Цвет">) => {
-      state.open = action.payload;
+    setMenuColor: (state) => {
+      state.open = "Цвет";
     },
-    setMenuEffects: (state, action: PayloadAction<"Узоры">) => {
-      state.open = action.payload;
+    setMenuEffects: (state) => {
+      state.open = "Узоры";
     },
-    setMenuClose: (state, action: PayloadAction<"">) => {
-      state.open = action.payload;
+    setMenuClose: (state) => {
+      state.open = "";
     },
   },
 });

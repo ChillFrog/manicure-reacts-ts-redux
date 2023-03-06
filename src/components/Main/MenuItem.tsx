@@ -2,7 +2,7 @@ const menuButtonStyle =
   "flex items-center justify-center w-full mx-1 text-center font-medium rounded-xl py-2 px-2 bg-indigo-50";
 
 interface MenuItemProps {
-  onClick: 
+  onClick?: () => void;
   src: string;
   alt: string;
   text: string;
