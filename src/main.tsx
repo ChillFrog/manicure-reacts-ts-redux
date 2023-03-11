@@ -9,6 +9,8 @@ import { createBrowserRouter, Route, Link } from "react-router-dom";
 import Login from "./components/Login/Login";
 import Root from "./routes/Root";
 import ErrorPage from "./routes/ErrorPage";
+import Profile from "./components/Profile/Profile";
+import OtherProfile from "./components/Profile/OtherProfile";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +22,11 @@ const router = createBrowserRouter([
       {
         path: "home",
         element: <App />,
+      },
+      {
+        path: `profile/:uid`,
+        element: <Profile />,
+        errorElement: <ErrorPage />,
       },
     ],
   },

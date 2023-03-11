@@ -16,11 +16,12 @@ import MenuItem from "./components/Main/MenuItem";
 import { useAppDispatch } from "./hooks/hooks";
 import DropdownMenu from "./components/Main/DropdownMenu";
 import DropdownItem from "./components/Main/DropdownItem";
+import ColorsBar from "./components/Main/ColorsBar";
 
 function App() {
   const dispatch = useAppDispatch();
   return (
-    <div className="flex flex-col">
+    <div className="flex h-screen flex-col ">
       <Search />
       <Menu>
         <MenuItem
@@ -44,9 +45,10 @@ function App() {
       </Menu>
       <DropdownMenu>
         <DropdownItem text="Форма">
-          <div className="flex h-40">
-            <ShapesBar />
-          </div>
+          <ShapesBar />
+        </DropdownItem>
+        <DropdownItem text="Цвет">
+          <ColorsBar />
         </DropdownItem>
       </DropdownMenu>
     </div>

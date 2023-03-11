@@ -1,19 +1,18 @@
 import { createApi, fakeBaseQuery } from "@reduxjs/toolkit/query/react";
 import {
-  arrayUnion,
-  collection,
-  doc,
-  updateDoc,
-  getDocs,
-} from "firebase/firestore";
-import { firestore } from "../lib/controller";
+  GoogleAuthProvider,
+  signInWithPopup,
+  UserCredential,
+} from "firebase/auth";
+import { collection, doc, updateDoc, getDocs } from "firebase/firestore";
+import { auth, firestore } from "../lib/controller";
 import { Shapes } from "../types/shapesType";
 
 type ShapesResponse = Shapes[];
 
-export const shapesApi = createApi({
+export const baseApi = createApi({
   baseQuery: fakeBaseQuery(),
-  tagTypes: ["shapes"],
+  tagTypes: ["shapes", "Auth", "UserProfile"],
   endpoints: (builder) => ({
     fetchShapes: builder.query<ShapesResponse, void>({
       async queryFn() {

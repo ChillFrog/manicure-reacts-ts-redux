@@ -1,19 +1,21 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import authReducer from "../reducers/authSlice";
 import menuReducer from "../reducers/menuSlice";
-import { shapesApi } from "../services/shapesAPI";
+import userReducer from "../reducers/userSlice";
+import colorsReducer from "../reducers/colorsSlice";
+import { baseApi } from "../services/baseAPI";
 // ...
 
 const rootReducer = combineReducers({
-  authReducer,
   menuReducer,
-  [shapesApi.reducerPath]: shapesApi.reducer,
+  userReducer,
+  colorsReducer,
+  [baseApi.reducerPath]: baseApi.reducer,
 });
 
 export const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleWare) =>
-    getDefaultMiddleWare().concat(shapesApi.middleware),
+    getDefaultMiddleWare().concat(baseApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
