@@ -12,7 +12,7 @@ const ColorSquare = ({ bgValue }: { bgValue: string }) => {
   return (
     <button
       type="button"
-      className={`ml-3 mt-3 h-14 w-14 rounded-xl `}
+      className={`ml-3 mt-3 h-14 w-14 rounded-xl shadow `}
       style={{ backgroundColor: `${bgValue}` }}
       onClick={handleChangeColorOnClick}
     ></button>

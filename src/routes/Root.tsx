@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 
 function Root() {
   return (
-    <div>
+    <div className="min-h-screen min-w-fit bg-gradient-to-tr from-indigo-200 via-purple-200 to-indigo-200">
       <Navbar />
       <Outlet></Outlet>
     </div>

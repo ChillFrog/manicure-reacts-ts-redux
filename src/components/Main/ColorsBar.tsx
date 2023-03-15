@@ -22,13 +22,13 @@ function ColorsBar() {
         <HexColorPicker
           color={currentColor}
           onChange={handlePalleteColorChange}
-          className="mt-3"
+          className="mt-3 mb-2"
         ></HexColorPicker>
         <div className="flex">
           <HexColorInput
             color={currentColor}
             onChange={handlePalleteColorChange}
-            className="w-40 bg-white"
+            className="mr-4 w-36 rounded-xl bg-white"
           ></HexColorInput>
           <AddColor />
         </div>

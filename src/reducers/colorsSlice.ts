@@ -13,7 +13,7 @@ type ColorArrayState = {
 };
 
 const initialState: ColorsState = {
-  currentColor: "f42929",
+  currentColor: "#f42929",
   colorsArray: colorsArrayDefault,
 };
 

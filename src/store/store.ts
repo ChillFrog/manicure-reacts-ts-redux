@@ -1,13 +1,12 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import menuReducer from "../reducers/menuSlice";
-import userReducer from "../reducers/userSlice";
 import colorsReducer from "../reducers/colorsSlice";
 import { baseApi } from "../services/baseAPI";
+import { authApi } from "../services/authAPI";
 // ...
 
 const rootReducer = combineReducers({
   menuReducer,
-  userReducer,
   colorsReducer,
   [baseApi.reducerPath]: baseApi.reducer,
 });

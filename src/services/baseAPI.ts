@@ -12,7 +12,7 @@ type ShapesResponse = Shapes[];
 
 export const baseApi = createApi({
   baseQuery: fakeBaseQuery(),
-  tagTypes: ["shapes", "Auth", "UserProfile"],
+  tagTypes: ["shapes", "UserProfile"],
   endpoints: (builder) => ({
     fetchShapes: builder.query<ShapesResponse, void>({
       async queryFn() {

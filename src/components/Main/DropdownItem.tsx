@@ -12,10 +12,10 @@ function DropdownItem({ text, children }: DropdownItemProps) {
 
   return (
     <div
-      className={`mx-3 flex snap-x overflow-hidden rounded-xl bg-indigo-50 duration-300 ease-in-out ${
+      className={`absolute bottom-0 w-full snap-x overflow-auto rounded-xl bg-white bg-opacity-30 ease-in-out ${
         open === text
-          ? "translate-y-0 opacity-100"
-          : "-translate-y-3 opacity-0 duration-500"
+          ? "translate-y-0 border-opacity-100 opacity-100 duration-500"
+          : "-translate-y-3 border-opacity-0  opacity-0"
       }`}
     >
       {open === text && <div className="flex h-auto">{children}</div>}

@@ -21,7 +21,7 @@ import ColorsBar from "./components/Main/ColorsBar";
 function App() {
   const dispatch = useAppDispatch();
   return (
-    <div className="flex h-screen flex-col ">
+    <div className="flex h-full flex-col ">
       <Search />
       <Menu>
         <MenuItem
@@ -51,6 +51,7 @@ function App() {
           <ColorsBar />
         </DropdownItem>
       </DropdownMenu>
+      <div className="h-screen"></div>
     </div>
   );
 }

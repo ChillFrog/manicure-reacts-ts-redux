@@ -4,22 +4,16 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   signOut,
-  updateCurrentUser,
-  User,
 } from "firebase/auth";
 import { collection, doc, getDoc, setDoc } from "firebase/firestore";
 import { auth, firestore } from "../lib/controller";
 import { baseApi } from "./baseAPI";
 
 type IUser = {
-  uid: string | undefined;
+  uid: string | undefined | null;
   displayName: string | undefined | null;
   email: string | undefined | null;
   photoURL: string | null | undefined;
-};
-
-type IUserProfile = {
-  data: IUser;
 };
 
 export const authApi = baseApi.injectEndpoints({
@@ -55,15 +49,19 @@ export const authApi = baseApi.injectEndpoints({
           throw error;
         }
       },
-      invalidatesTags: ["Auth"],
+      invalidatesTags: ["UserProfile"],
     }),
-    getUserProfile: builder.query<IUser, void>({
+    getUserProfile: builder.query<IUser | null, void>({
       async queryFn() {
         try {
           await getRedirectResult(auth);
           const user = auth.currentUser;
+          console.log(user);
           if (!user) {
-            throw new Error("Пользователь не авторизирован");
+            console.log("nouser");
+            console.log("user is ", user);
+            console.log("currentUser is ", auth.currentUser);
+            return { data: null };
           }
           const uid = user?.uid;
           const userRef = doc(firestore, "users", uid);
@@ -78,8 +76,17 @@ export const authApi = baseApi.injectEndpoints({
       },
       providesTags: ["UserProfile"],
     }),
+    Logout: builder.mutation({
+      async queryFn() {
+        await getRedirectResult(auth);
+        await signOut(auth);
+        return { data: null };
+      },
+      invalidatesTags: ["UserProfile"],
+    }),
     getUserProfileById: builder.query<IUser, string>({
       queryFn: async (uid) => {
+        await getRedirectResult(auth);
         try {
           const userRef = uid ? doc(firestore, "users", uid) : null;
           if (!userRef) {
@@ -96,14 +103,6 @@ export const authApi = baseApi.injectEndpoints({
           throw error;
         }
       },
-    }),
-    logout: builder.mutation({
-      async queryFn() {
-        await getRedirectResult(auth);
-        await signOut(auth);
-        return { data: undefined };
-      },
-      invalidatesTags: ["Auth", "UserProfile"],
     }),
   }),
 });

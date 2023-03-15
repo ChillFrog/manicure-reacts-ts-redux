@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
-import { RouteObject, RouterProvider } from "react-router-dom";
+import { RouterProvider } from "react-router-dom";
 import App from "./App";
 import "./index.css";
 import { store } from "./store/store";
@@ -10,7 +10,6 @@ import Login from "./components/Login/Login";
 import Root from "./routes/Root";
 import ErrorPage from "./routes/ErrorPage";
 import Profile from "./components/Profile/Profile";
-import OtherProfile from "./components/Profile/OtherProfile";
 
 const router = createBrowserRouter([
   {
